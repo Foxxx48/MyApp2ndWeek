@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyApp2ndWeek</string>
+    <string name="home">HOME</string>
+    <string name="shop">SHOP</string>
+    <string name="delivery">DELIVERY</string>
+    <string name="account">ACCOUNT</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
