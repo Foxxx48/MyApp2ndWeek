@@ -1,11 +1,22 @@
 <resources>
-    <string name="app_name">MyApp2ndWeek</string>
+    <string name="app_name">Kinonax</string>
+    <string name="version">2.1.1</string>
     <string name="home">HOME</string>
     <string name="shop">SHOP</string>
     <string name="delivery">DELIVERY</string>
     <string name="account">ACCOUNT</string>
     <string name="favorites">FAVORITES</string>
     <string name="settings">SETTINGS</string>
+    <string name="play">PLAY</string>
+    <string name="batman">BATMAN</string>
+    <string name="director">Christopher Nolan</string>
+    <string name="longMovie">165 min</string>
+    <string name="main">MAIN</string>
+    <string name="video">VIDEO</string>
+    <string name="location">LOCATION</string>
+    <string name="contacts">CONTACTS</string>
+    <string name="help">HELP</string>
+    <string name="developer">DEVELOPER</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

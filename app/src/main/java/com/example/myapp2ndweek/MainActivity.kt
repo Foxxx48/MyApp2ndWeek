@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.example.myapp2ndweek.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 
-class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private var binding:ActivityMainBinding? = null
 
@@ -21,36 +22,39 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
 
         setSupportActionBar(binding?.topAppBar)
 
-
         supportFragmentManager.beginTransaction().replace(R.id.content, Home()).commit()
 
+//Add binding for bottom Navigation
         binding?.bottomNav?.setOnNavigationItemSelectedListener(this)
         binding?.bottomNav?.selectedItemId = R.id.homeItemBottomNav
 
+//Add binding for card
+        binding?.card?.setOnLongClickListener {
+            binding?.card?.isChecked = !binding?.card?.isChecked!!
+            true
+        }
+
+        binding?.buttonMovie?.setOnClickListener(this)
+
+//Add binding for top Application Bar
         binding?.topAppBar?.setOnMenuItemClickListener { menuItem:MenuItem ->
 
             when(menuItem.itemId) {
-
                 R.id.favoritesItemTopNav -> {
                     supportFragmentManager.beginTransaction().replace(R.id.content, Favorites()).commit()
-
                     true
-
                 }
 
                 R.id.settingsItemTopNav -> {
                     supportFragmentManager.beginTransaction().replace(R.id.content, Settings()).commit()
-
                     true
-
                 }
-
                 else -> false
             }
-
         }
     }
 
+//Methods for bottom Navigation
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId) {
@@ -63,6 +67,7 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
         return true
     }
 
+//Methods for top Application Bar
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
         val menuInflater = menuInflater
@@ -70,4 +75,39 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
 
         return true
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+
+            android.R.id.home -> {
+
+                val mainMenu = MainMenu()
+                mainMenu.show(
+                    supportFragmentManager,
+                    "main_menu"
+                )
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+//Methods for card
+    override fun onClick(view: View) {
+
+        val details = Details()
+
+        val parameters = Bundle()
+
+        parameters.putString("nameMovie", binding?.nameMovie?.text?.toString())
+        parameters.putString("longMovie", binding?.longMovie?.text?.toString())
+        parameters.putString("actorsMovie", binding?.actorsMovie?.text?.toString())
+
+        details.arguments = parameters
+
+        details.show(supportFragmentManager, "details")
+
+    }
+
+
 }
