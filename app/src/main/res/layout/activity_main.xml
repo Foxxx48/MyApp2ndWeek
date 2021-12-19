@@ -76,7 +76,6 @@
             android:layout_width="240dp"
             android:layout_height="360dp"
             android:layout_margin="20dp"
-            android:layout_marginBottom="1314dp"
             android:checkable="true"
             android:clickable="true"
             android:focusable="true"
@@ -85,7 +84,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/linearLayoutCompat"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/linearLayoutCompat"
+            app:layout_constraintVertical_bias="0.2"
             app:strokeColor="@android:color/white"
             app:strokeWidth="1dp">
 
@@ -113,36 +113,90 @@
                     android:layout_marginStart="3dp"
                     android:layout_marginTop="3dp"
                     android:background="@color/white"
+                    android:fontFamily="@font/roboto"
                     android:padding="10dp"
                     android:text="@string/batman"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/actorsMovie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:background="@color/black"
                     android:padding="10dp"
                     android:text="@string/director"
-                    android:background="@color/black"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/longMovie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/black"
                     android:padding="10dp"
                     android:text="@string/longMovie"
-                    android:background="@color/black"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/headerSelectPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card"
+            android:layout_marginTop="10dp"
+            android:text="@string/headerPart"
+            android:textColor="@android:color/white"/>
+
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:stepSize="1"
+            android:valueFrom="1"
+            android:valueTo="3"
+            app:layout_constraintEnd_toEndOf="@+id/card"
+            app:layout_constraintStart_toStartOf="@id/card"
+            app:layout_constraintTop_toBottomOf="@id/headerSelectPart"
+            app:thumbColor="@android:color/holo_orange_dark"
+            app:tickColorActive="@color/orange"
+            app:tickColorInactive="@android:color/black"
+            app:trackColorActive="@android:color/holo_orange_dark"
+            app:trackColorInactive="@android:color/darker_gray" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/selectedPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/slider"
+            android:layout_margin="10dp"
+            android:text="@string/app_name"
+            android:textColor="@android:color/white"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/descSelectedPart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/selectedPart"
+            android:layout_margin="10dp"
+            android:textColor="@android:color/white"/>
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

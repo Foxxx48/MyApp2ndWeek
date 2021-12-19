@@ -8,7 +8,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.example.myapp2ndweek.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.android.material.slider.Slider
 
 
 class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
@@ -52,7 +52,27 @@ class MainActivity : AppCompatActivity(),BottomNavigationView.OnNavigationItemSe
                 else -> false
             }
         }
+
+//Add slider
+        binding?.slider?.addOnSliderTouchListener(object : Slider.OnSliderTouchListener {
+            override fun onStartTrackingTouch(slider: Slider) {
+                binding?.selectedPart?.text = getString(R.string.action)
+            }
+
+
+            override fun onStopTrackingTouch(slider: Slider) {
+                binding?.selectedPart?.text = getString(R.string.beforeAction)
+            }
+        })
+
+        binding?.slider?.addOnChangeListener { slider, value, fromUser ->
+            binding?.descSelectedPart?.text = getString(R.string.yourSelected) + " " + value + " " +
+                    getString(R.string.series)
+        }
     }
+
+
+
 
 //Methods for bottom Navigation
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
